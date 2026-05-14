@@ -1,0 +1,41 @@
+<div class="hero bg-base-100">
+    <div class="hero-content flex-col lg:flex-row-reverse">
+      <div class="card bg-base-200 w-full max-w-sm shrink-0 shadow-2xl">
+        <form class="card-body">
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Email</span>
+            </label>
+            <input 
+            type="email" 
+            placeholder="email" 
+            class="input input-bordered" 
+            name = "email"
+            [(ngModel)] = 'loginObj.emailId'
+            required />
+          </div>
+          <div class="form-control">
+            <label class="label">
+              <span class="label-text">Password</span>
+            </label>
+            <input 
+            type="password" 
+            placeholder="password" 
+            class="input input-bordered" 
+            name = "password"
+            [(ngModel)] = 'loginObj.password'
+            required />
+            <label class="label">
+              <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+            </label>
+          </div>
+          <div class="form-control mt-3">
+            @if(errorMessage){
+              <p class="text-red-500 my-2 text-center">{{errorMessage}}</p>
+            }
+            <button class="btn btn-primary" (click) = 'onLogin()' >Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
