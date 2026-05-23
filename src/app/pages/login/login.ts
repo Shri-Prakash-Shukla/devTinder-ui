@@ -1,8 +1,8 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import {  Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Authservice } from '../../services/auth.service';
 @Component({
   selector: 'app-login',
   imports: [FormsModule],
@@ -13,7 +13,7 @@ export class Login {
 
   private http = inject(HttpClient);
   private router = inject(Router);
-  private cdr = inject(ChangeDetectorRef);
+  private authService = inject(Authservice);
   errorMessage = "";
 
   loginObj = {
@@ -25,6 +25,8 @@ export class Login {
     const url = 'http://localhost:3000/login';
     this.http.post(url, this.loginObj).subscribe({
       next : (res) => {
+        this.authService.updateUser(res);
+        localStorage.setItem('user', JSON.stringify(res));
         this.router.navigateByUrl('/feed');
       },
       error : (err) =>{
