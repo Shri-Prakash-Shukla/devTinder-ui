@@ -1,0 +1,19 @@
+<div *ngFor = "let request of requests" class="flex justify-center">
+    <div class="card card-side bg-base-300 shadow-xl w-1/2 mt-4 flex flex-col">
+        <div class = "flex">
+            <div class="avatar flex items-center ml-2">
+                <div class="w-24 h-24 rounded-full">
+                    <img [src]='request.fromUserId.photoUrl' alt='Error'/>
+                </div>
+            </div>
+            <div class="card-body">
+                <h2 class="card-title">{{request.fromUserId.firstName + " " + request.fromUserId.lastName}}</h2>
+                <p>{{request.fromUserId.about}}</p>
+            </div>
+        </div>
+        <div class="px-24 flex gap-2.5 justify-center my-4">
+            <button class="btn btn-primary" (click) = "handleRequest('accepted', request._id)">Accept</button>
+            <button class="btn btn-secondary" (click) = "handleRequest('rejected', request._id)">Reject</button>
+        </div>
+    </div>
+</div>

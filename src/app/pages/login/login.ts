@@ -26,7 +26,6 @@ export class Login {
     this.http.post(url, this.loginObj).subscribe({
       next : (res) => {
         this.authService.updateUser(res);
-        localStorage.setItem('user', JSON.stringify(res));
         this.router.navigateByUrl('/feed');
       },
       error : (err) =>{
