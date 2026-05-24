@@ -1,0 +1,101 @@
+<div class="flex">
+    <div class="hero bg-base-100 w-1/2">
+        <div class="hero-content flex-col lg:flex-row-reverse">
+        <div class="card bg-base-200 w-full max-w-sm shrink-0 shadow-2xl">
+            <form class="card-body">
+            <div class="form-control">
+                <label class="label">
+                <span class="label-text">First Name</span>
+                </label>
+                <input 
+                type="text" 
+                placeholder="First Name" 
+                class="input input-bordered" 
+                name = "firstName"
+                [(ngModel)] = "firstName"
+                required />
+            </div>
+            <div class="form-control">
+                <label class="label">
+                <span class="label-text">Last Name</span>
+                </label>
+                <input 
+                type="text" 
+                placeholder="Last Name" 
+                class="input input-bordered" 
+                name = "lastName"
+                [(ngModel)] = "lastName"
+                required />
+            </div>
+            <div class="form-control">
+                <label class="label">
+                <span class="label-text">Age</span>
+                </label>
+                <input 
+                type="text" 
+                placeholder="Age" 
+                class="input input-bordered" 
+                name = "age"
+                [(ngModel)] = "age"
+                required />
+            </div>
+            <div class="form-control">
+                <label class="label">
+                <span class="label-text">PhotoUrl</span>
+                </label>
+                <input 
+                type="text" 
+                placeholder="PhotoUrl" 
+                class="input input-bordered" 
+                name = "photoUrl"
+                [(ngModel)] = "photoUrl"
+                required />
+            </div>
+            <div class="form-control">
+                <label class="label">
+                <span class="label-text">About</span>
+                </label>
+                <input 
+                type="text" 
+                placeholder="About" 
+                class="input input-bordered" 
+                name = "about"
+                [(ngModel)] = "about"
+                required />
+            </div>
+            <div class="form-control mt-3 flex items-center">
+                <button class="btn btn-primary w-1/2" (click) = "updateProfile()">Update</button>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    <div class="flex md:place-self-center h-full" >
+        <div class="card bg-base-200 w-96 shadow-sm">
+            <figure class="px-5 pt-5">
+            <img
+                [src]="photoUrl"
+                alt="Shoes"
+                class="rounded-xl" />
+            </figure>
+            <div class="card-body items-center text-center p-4">
+                <h2 class="card-title">{{firstName + " " + lastName}}</h2>
+                <p>{{about}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="toast toast-center toast-middle" style = "top : 15%">
+    @if(showToast){
+        @if(!isError){
+            <div class="alert alert-info bg-green-500">
+                <span>Profile Updated Successfully</span>
+            </div>
+        }
+        @if(isError){
+            <div class="alert alert-success bg-red-600">
+                <span>Error !!</span>
+            </div>
+        }
+    }
+</div>

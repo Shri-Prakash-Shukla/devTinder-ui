@@ -23,7 +23,6 @@ export class Authservice{
         } else {
             localStorage.removeItem('user');
         }
-        console.log("user : ", JSON.stringify(user, null, 2));
     }
     
     getCurrentUser() {
