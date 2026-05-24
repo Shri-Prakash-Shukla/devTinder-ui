@@ -1,0 +1,13 @@
+<div *ngFor = "let connection of connections;" class="flex justify-center">
+    <div class="card card-side bg-base-300 shadow-xl w-1/2 mt-4">
+        <div class="avatar flex items-center ml-2">
+            <div class="w-24 h-24 rounded-full">
+                <img [src]='connection.photoUrl' alt='Error'/>
+            </div>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">{{connection.firstName + " " + connection.lastName}}</h2>
+            <p>{{connection.about}}</p>
+        </div>
+    </div>
+</div>
