@@ -36,13 +36,16 @@ export class Requests {
   handleRequest(status : string, id:any){
     this.http.post<any>('http://localhost:3000/review/' + status + "/" + id, {}).subscribe({
       next : (data)=>{
-        const id = data._id;
+        const id = data?.data?._id;
         let oldReq = this.requestsService.getCurrentRequests().data;
         let newReq = oldReq.filter((req : any)=>{
           if(req._id !== id)return req;
         })
 
-        this.requestsService.updateRequests(newReq);
+        this.requestsService.updateRequests({
+          "message":"",
+          data : newReq
+        });
       },
       error : (err)=>{
         console.error("Some Error Occured While Reviewing the request ", JSON.stringify(err, null, 2));

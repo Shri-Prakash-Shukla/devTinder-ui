@@ -1,17 +1,23 @@
-<div class="flex md:place-self-center" style="margin: 15px 0;">
-    <div class="card bg-base-200 w-96 shadow-sm">
-        <figure class="px-10 pt-10">
-        <img
-            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-            alt="Shoes"
-            class="rounded-xl" />
-        </figure>
-        <div class="card-body items-center text-center p-2">
-        <h2 class="card-title">Card Title</h2>
-        <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-        <div class="card-actions">
-            <button class="btn btn-primary">Buy Now</button>
-        </div>
+@if(feed && feed.length !==0){
+    <div class="flex md:place-self-center" style="margin: 15px 0;">
+        <div class="card bg-base-200 w-96 shadow-sm">
+            <figure class="px-10 pt-10">
+            <img
+                [src]='feed[0].photoUrl'
+                alt="Shoes"
+                class="rounded-xl" />
+            </figure>
+            <div class="card-body items-center text-center p-2">
+            <h2 class="card-title">{{feed[0].firstName + " " + feed[0].lastName}}</h2>
+            <p>{{feed[0].about}}</p>
+            <div class="card-actions">
+                <button class="btn btn-primary" (click) = "handleConnection('ignored', feed[0]._id)">Ignore</button>
+                <button class="btn btn-primary" (click) = "handleConnection('interested', feed[0]._id)">Interested</button>
+            </div>
+            </div>
         </div>
     </div>
-</div>
+}
+@else{
+    <h1>No data available</h1>
+}
