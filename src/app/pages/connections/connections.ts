@@ -23,7 +23,7 @@ export class Connections {
         console.log("Connections of a user : ", JSON.stringify(data, null, 2));
         this.connections = data?.data;
       })
-      this.http.get('/api', {}).subscribe({
+      this.http.get('/api/connections', {}).subscribe({
         next : (connections)=>{
           this.connectionService.updateConnections(connections);
         },
