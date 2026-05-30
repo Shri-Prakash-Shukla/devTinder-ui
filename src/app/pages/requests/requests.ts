@@ -23,7 +23,7 @@ export class Requests {
       console.log("Requests of user : ", JSON.stringify(this.requests, null, 2));
     })
 
-    this.http.get<any>('http://localhost:3000/view/requests',{}).subscribe({
+    this.http.get<any>('/api/view/requests',{}).subscribe({
       next : (res)=>{
         this.requestsService.updateRequests(res);
       },
@@ -34,7 +34,7 @@ export class Requests {
   }
 
   handleRequest(status : string, id:any){
-    this.http.post<any>('http://localhost:3000/review/' + status + "/" + id, {}).subscribe({
+    this.http.post<any>('/api/review/' + status + "/" + id, {}).subscribe({
       next : (data)=>{
         const id = data?.data?._id;
         let oldReq = this.requestsService.getCurrentRequests().data;

@@ -15,14 +15,19 @@ export class Login {
   private router = inject(Router);
   private authService = inject(Authservice);
   errorMessage = "";
+  firstName = "";
+  lastName = "";
+  age = "";
+  gender = "";
+  onLoginPage = true;
 
   loginObj = {
-    emailId : 'shivam@gmail.com',
-    password : 'shivam@123'
+    emailId : '',
+    password : ''
   }
 
   onLogin(){
-    const url = 'http://localhost:3000/login';
+    const url = '/api/login';
     this.http.post(url, this.loginObj).subscribe({
       next : (res) => {
         this.authService.updateUser(res);
@@ -34,6 +39,29 @@ export class Login {
         console.log('error : ',JSON.stringify(err, null, 2));
       }
     });
+  }
+
+  onSignUp(){
+    const url = '/api/signup';
+    this.http.post(url, {
+      firstName : this.firstName,
+      lastName : this.lastName,
+      age : this.age,
+      gender : this.gender,
+      emailId : this.loginObj.emailId,
+      password : this.loginObj.password,
+    }).subscribe({
+      next : (res) => {
+        this.onLoginPage = true;
+        this.loginObj.emailId = "";
+        this.loginObj.password = "";
+      },
+      error : (err) =>{
+        if(err.status == 400)this.errorMessage = err.error;
+        else this.errorMessage = "Something went wrong";
+        console.log('error : ',JSON.stringify(err, null, 2));
+      }
+    });   
   }
 
 }

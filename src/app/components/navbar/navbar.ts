@@ -31,7 +31,7 @@ export class Navbar {
   }
 
   logout() {
-    this.http.post('http://localhost:3000/logout', {}).subscribe({
+    this.http.post('/api', {}).subscribe({
       next: () => {
         this.authService.updateUser(null);
         this.router.navigate(['/login']);

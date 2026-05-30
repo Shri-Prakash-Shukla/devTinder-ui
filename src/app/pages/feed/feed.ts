@@ -23,7 +23,7 @@ export class Feed {
       console.log("Feed of the user we are getting from observable ", this.feed);
     })
 
-    this.http.get<any>('http://localhost:3000/feed', {}).subscribe({
+    this.http.get<any>('/api/feed', {}).subscribe({
       next : (data)=>{
         this.feedService.updateFeed(data);
         console.log("Feed of the user : ", JSON.stringify(data, null, 2));
@@ -35,7 +35,7 @@ export class Feed {
   }
 
   handleConnection(status : string, id : any){
-    this.http.post<any>('http://localhost:3000/request/'+status+"/"+id, {}).subscribe({
+    this.http.post<any>('/api/request/'+status+"/"+id, {}).subscribe({
       next : (data)=>{
         console.log("result getting after sending/ignoring user", JSON.stringify(data, null, 2));
         let newFeed = this.feedService.getCurrentFeed().data.filter((a : any)=>{

@@ -35,7 +35,7 @@ export class Profile {
     }
 
     updateProfile(){
-      this.http.patch('http://localhost:3000/user', {
+      this.http.patch('/api/user', {
         firstName : this.firstName,
         lastName : this.lastName,
         about : this.about,
