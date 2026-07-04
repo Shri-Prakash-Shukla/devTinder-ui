@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+.angular/
+
+# Build outputs (Very Important for Multi-stage)
+dist/
+build/
+
+# Version control
+.git/
+.gitignore
+
+# IDE config files
+.editorconfig
+.vscode/
+
+# Docker related files
+Dockerfile
+.dockerignore
+
+# Debug & Error logs
+npm-debug.log
+yarn-error.log
