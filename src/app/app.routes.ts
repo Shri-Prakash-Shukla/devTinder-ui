@@ -10,7 +10,7 @@ import { Requests } from './pages/requests/requests';
 export const routes: Routes = [
     {path: 'login', component: Login, canActivate : [noAuthGuard] },
     {path:'feed', component:Feed, canActivate : [authGuard]},
-    {path:'', redirectTo:'/feed', pathMatch:'full'},
+    {path:'', redirectTo:'/login', pathMatch:'full'},
     {path:'profile', component : Profile, canActivate : [authGuard]},
     {path:'connections', component : Connections, canActivate : [authGuard]},
     {path : 'requests', component : Requests, canActivate : [authGuard]},

@@ -41,6 +41,16 @@ export class Login {
     });
   }
 
+  onGoogleLogin() {
+    const params = new URLSearchParams({
+      client_id: '409096554769-i8hp31tin833dlt7be36qvfj4pms9bd0.apps.googleusercontent.com',  
+      redirect_uri: 'http://localhost:3000/auth/callback',
+      response_type: 'code',
+      scope: 'openid email profile',
+    });
+    window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
+  }
+
   onSignUp(){
     const url = '/api/signup';
     this.http.post(url, {
@@ -51,7 +61,7 @@ export class Login {
       emailId : this.loginObj.emailId,
       password : this.loginObj.password,
     }).subscribe({
-      next : (res) => {
+      next : (_res) => {
         this.onLoginPage = true;
         this.loginObj.emailId = "";
         this.loginObj.password = "";
