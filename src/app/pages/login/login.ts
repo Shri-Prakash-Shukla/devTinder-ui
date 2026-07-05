@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Authservice } from '../../services/auth.service';
+import { environment } from '../../../environments/environment'
 @Component({
   selector: 'app-login',
   imports: [FormsModule],
@@ -43,8 +44,8 @@ export class Login {
 
   onGoogleLogin() {
     const params = new URLSearchParams({
-      client_id: '409096554769-i8hp31tin833dlt7be36qvfj4pms9bd0.apps.googleusercontent.com',  
-      redirect_uri: 'http://localhost:3000/auth/callback',
+      client_id: environment.googleClientId,  
+      redirect_uri: environment.googleRedirectUri,
       response_type: 'code',
       scope: 'openid email profile',
     });
