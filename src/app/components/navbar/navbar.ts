@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Authservice } from '../../services/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
+import { PaymentService } from '../../services/payment.service';
 @Component({
   selector: 'app-navbar',
   imports: [RouterLink],
@@ -12,6 +13,7 @@ export class Navbar {
   private authService = inject(Authservice);
   private http = inject(HttpClient);
   private router = inject(Router);
+  private paymentService = inject(PaymentService)
   
   isLoggedIn : boolean = false;
   photoUrl : string = "";
@@ -42,5 +44,8 @@ export class Navbar {
         this.router.navigate(['/login']);
       }
     });
+  }
+  supportUs() {
+    this.paymentService.pay();
   }
 }

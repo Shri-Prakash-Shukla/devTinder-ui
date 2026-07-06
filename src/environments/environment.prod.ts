@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
   googleClientId: '409096554769-i8hp31tin833dlt7be36qvfj4pms9bd0.apps.googleusercontent.com',
-  googleRedirectUri: 'http://devtinders.duckdns.org/api/auth/callback'
+  googleRedirectUri: 'http://devtinders.duckdns.org/api/auth/callback',
+  razorpayKey: 'rzp_test_TA7FjbtL7DJZDz'
 };
