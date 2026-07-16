@@ -3,13 +3,13 @@ import { Component, inject } from '@angular/core';
 import { ConnectionService } from '../../services/connections.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-connections',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './connections.html',
   styleUrl: './connections.scss',
-  providers : [ConnectionService],
 })
 export class Connections {
     private http = inject(HttpClient);
@@ -20,7 +20,6 @@ export class Connections {
 
     ngOnInit(){
       this.stateSub=this.connectionService.connections$.subscribe((data)=>{
-        console.log("Connections of a user : ", JSON.stringify(data, null, 2));
         this.connections = data?.data;
       })
       this.http.get('/api/connections', {}).subscribe({

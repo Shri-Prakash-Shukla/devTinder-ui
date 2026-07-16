@@ -6,6 +6,7 @@ import { noAuthGuard } from './services/no-auth.guard';
 import { Profile } from './pages/profile/profile';
 import { Connections } from './pages/connections/connections';
 import { Requests } from './pages/requests/requests';
+import { Chat } from './pages/chat/chat'
 
 export const routes: Routes = [
     {path: 'login', component: Login, canActivate : [noAuthGuard] },
@@ -14,4 +15,5 @@ export const routes: Routes = [
     {path:'profile', component : Profile, canActivate : [authGuard]},
     {path:'connections', component : Connections, canActivate : [authGuard]},
     {path : 'requests', component : Requests, canActivate : [authGuard]},
+    {path : 'chat/:id', component : Chat, canActivate : [authGuard]},
 ];

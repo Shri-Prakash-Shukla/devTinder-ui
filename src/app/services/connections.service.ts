@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 
-@Injectable()
+@Injectable({providedIn : 'root'})
 export class ConnectionService{
     private connectionSubject : BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -21,5 +21,12 @@ export class ConnectionService{
         }else{
             localStorage.removeItem('connections');
         }
+    }
+
+    getConnectionById(id : string){
+        const connections = this.connectionSubject.value.data;
+        return connections.find((c:any)=>{
+            if(c._id === id)return c;
+        })
     }
 }

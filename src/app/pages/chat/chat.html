@@ -1,0 +1,47 @@
+<div class="flex flex-col h-screen bg-base-200">
+
+  <!-- Header (fixed at top) -->
+  <div class="sticky top-0 z-10 navbar bg-base-300 shadow px-4">
+    <div class="avatar mr-3">
+      <div class="w-10 rounded-full">
+        <img [src]="targetUserInfo.photoUrl" />
+      </div>
+    </div>
+    <span class="text-lg font-bold">{{targetUserInfo.firstName + " " + targetUserInfo.lastName}}</span>
+  </div>
+
+  <!-- Chat Messages -->
+  <div class="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
+
+    @for (message of messages; track $index) {
+      <div class="chat" [class.chat-start]="!isMyMessage(message.userId)"
+                        [class.chat-end]="isMyMessage(message.userId)">
+        @if (!isMyMessage(message.userId)) {
+          <div class="chat-image avatar">
+            <div class="w-10 rounded-full">
+              <img [src]="targetUserInfo.photoUrl" alt="user" />
+            </div>
+          </div>
+        }
+        <div class="chat-bubble" [class.chat-bubble-primary]="isMyMessage(message.userId)">
+          {{ message.text }}
+        </div>
+      </div>
+    } @empty {
+      <div class="text-center text-sm opacity-50 mt-4">No messages yet. Say hi 👋</div>
+    }
+
+  </div>
+
+  <!-- Message Input (fixed at bottom) -->
+  <div class="sticky bottom-0 p-4 bg-base-300 flex gap-2 shadow-inner">
+    <input
+      type="text"
+      placeholder="Type a message..."
+      class="input input-bordered flex-1"
+      [(ngModel)]="text"
+    />
+    <button class="btn btn-primary" (click)="sendMessage()">Send</button>
+  </div>
+
+</div>

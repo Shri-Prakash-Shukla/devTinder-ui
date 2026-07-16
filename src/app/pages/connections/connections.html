@@ -8,6 +8,9 @@
         <div class="card-body">
             <h2 class="card-title">{{connection.firstName + " " + connection.lastName}}</h2>
             <p>{{connection.about}}</p>
+            <div class="card-actions justify-end">
+                <button class="btn btn-primary" [routerLink]="'/chat/'+ connection._id">Chat</button>
+            </div>
         </div>
     </div>
 </div>
